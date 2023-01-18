@@ -10,4 +10,4 @@ You will be graded on the exhaustiveness and quality of your unit tests, the dep
 
 ## Your Explanation Here
 
-My version of code is more readable because i implemented separation of concern by adopting DRY concept and also removing some of the unnecessary variable declarations. I also used the latest JS language features like arrow functions and template literals.
+My version of code is more readable because i implemented separation of concern by adopting DRY(creating a new method to handle codes that were duplicates) concept and also removing some of the unnecessary variable declarations.

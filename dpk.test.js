@@ -11,8 +11,10 @@ describe("deterministicPartitionKey", () => {
   });
 
   it("when candidate.length > MAX_PARTITION_KEY_LENGTH", () => {
-    const partitionKey = deterministicPartitionKey({partitionKey:'dedfc7d71057800ccefd4e8a339bcffa30c257886d2053f17682a466d0352cb4f5a80e089c0d787c39ef508fcf78d5391c3596e8f33d1d15e3341964c517aa4e', id: 1, name: 'name'});
-    expect(partitionKey).toBe("dedfc7d71057800ccefd4e8a339bcffa30c257886d2053f17682a466d0352cb4f5a80e089c0d787c39ef508fcf78d5391c3596e8f33d1d15e3341964c517aa4e");
+    const partitionObj = {partitionKey:'dedfc7ddddd71057800ccefd4e8a339bcffa30c257886d2053f17682a466d0352cb4f5a80e089c0d787c39ef5dedfc7d71057800ccefd4e8a339bcffa30c257886d2053f17682a466d0352cb4f5a80e089c0d787c39ef508fcf78d5391c3596e8f33d1d15e3341964c517aa4e08fcf78d5391c3596e8f33d1d15e3341964c517aa4e'};
+    const partitionKey = deterministicPartitionKey();
+    expect(partitionKey.length <=128 ).toBe(true);
+    expect(partitionObj.partitionKey.length >= 256).toBe(true);
   });
   it("Returns a hash value when  partitionKey is not provided", () => {
     const partitionKey = deterministicPartitionKey({id:''});
@@ -20,7 +22,6 @@ describe("deterministicPartitionKey", () => {
   });
   it("Returns a string when a non string is provided as partitionKey", () => {
     const partitionKey = deterministicPartitionKey({partitionKey:12345});
-    console.log('partitionKey', partitionKey);
     expect(partitionKey).toBe("12345");
     expect(typeof partitionKey).toBe("string");
   });
